@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
     @GetMapping("/saluta")
     public String saluta(@RequestParam String nome, @RequestParam String regione){
-        return "Ciao " + nome + " che tempo fa in " + regione + " ?";
+        return " Ciao " + nome + " che tempo fa in " + regione + " ?";
     }
 }
