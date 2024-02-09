@@ -1,14 +1,13 @@
-package co.develhope.eserciziobonus;
+package co.develhope.esercizio4;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EsercizioBonusApplication {
+public class Esercizio4Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EsercizioBonusApplication.class, args);
+		SpringApplication.run(Esercizio4Application.class, args);
 	}
 
 }
-
