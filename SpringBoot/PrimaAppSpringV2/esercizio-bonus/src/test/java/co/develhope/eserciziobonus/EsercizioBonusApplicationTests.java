@@ -1,10 +1,10 @@
-package co.develhope.esercizio5;
+package co.develhope.eserciziobonus;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Esercizio5ApplicationTests {
+class EsercizioBonusApplicationTests {
 
 	@Test
 	void contextLoads() {
