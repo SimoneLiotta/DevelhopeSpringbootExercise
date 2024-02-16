@@ -11,7 +11,7 @@ public class ProdottoService {
     private ProdottoRepository prodottoRepository;
 
     List<Prodotto> getAllProdotti(){return prodottoRepository.findAll();}
-    Prodotto saveProdotto(Prodotto prodotto){return prodottoRepository.save(prodotto);}
+    void saveProdotto(Prodotto prodotto){ prodottoRepository.save(prodotto);}
     void deleteProdotto(Long id){prodottoRepository.deleteById(id);}
     Prodotto updateProdotto (Long id, Prodotto updateProdotto){
         Prodotto prodotto = prodottoRepository.findById(id).orElseThrow();

@@ -16,8 +16,8 @@ public class ProdottoController {
         return prodottoService.getAllProdotti();
     }
     @PostMapping("/save")
-    Prodotto saveProdotto(@RequestBody Prodotto prodotto){
-        return prodottoService.saveProdotto(prodotto);
+    void saveProdotto(@RequestBody Prodotto prodotto){
+         prodottoService.saveProdotto(prodotto);
     }
     @DeleteMapping("/delete/{id}")
     void deleteProdotto(@PathVariable Long id){prodottoService.deleteProdotto(id);}
