@@ -5,12 +5,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
 @Entity
 @Table
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Enrollments {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,3 +27,12 @@ public class Enrollments {
     @JoinColumn(name = "class_id")
     private ClassStudent classStudent;
 }
+
+
+
+
+
+
+
+
+
