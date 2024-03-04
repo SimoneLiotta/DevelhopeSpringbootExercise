@@ -13,22 +13,35 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    public void createNewUser(User user){userRepository.save(user);}
+    public User createNewUser(User user) {
+        return userRepository.save(user);
+    }
 
-    public List<User> userlist(){return userRepository.findAll();}
+    public List<User> userlist() {
+        return userRepository.findAll();
+    }
 
-    public User userById(Long id){return userRepository.findById(id).orElseThrow(()-> new NoSuchElementException("User con id: " + id + " non trovato!"));}
+    public User userById(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
 
-    public User updateUser(Long id, User updateUser){
-        User myUser = userRepository.findById(id).orElseThrow(()-> new NoSuchElementException("User con id: " + id + " non trovato!"));
+    public User updateUser(Long id, User updateUser) {
+        User user = userRepository.findById(id).orElseThrow(() -> new NoSuchElementException("User con id: " + id + " non trovato!"));
+        if (updateUser.getName() != null && !updateUser.getName().isEmpty()) {
+            user.setName(updateUser.getName());
+        }
+        if (updateUser.getSurname() != null && !updateUser.getSurname().isEmpty()) {
+            user.setSurname(updateUser.getSurname());
+        }
+        if (!user.equals(updateUser)) {
+            user = userRepository.save(user);
+        }
 
-        myUser.setName(updateUser.getName());
-        myUser.setSurname(updateUser.getSurname());
-
-        userRepository.save(myUser);
-        return myUser;
+        return user;
 
     }
 
-    public void deleteUser(Long id){userRepository.deleteById(id);}
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
+    }
 }
