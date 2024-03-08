@@ -20,7 +20,7 @@ public class FlightController {
     private FlightRepository flightRepository;
 
     @GetMapping
-    public List<Object[]> getAllFlights() {
+    public List<Flight> getAllFlights() {
         return flightRepository.retrieveAllFlights();
     }
 
