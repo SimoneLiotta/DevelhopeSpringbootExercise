@@ -20,6 +20,6 @@ public interface FlightRepository extends JpaRepository<Flight, Long>, JpaSpecif
     List<Flight> findByStatus(FlightStatus status);
 
     //    List<Flight> findByStatusIn(Set<FlightStatus> status);
-    @Query(value = "SELECT f FROM Flight f WHERE status IN (:status1,:status2)")
-    List<Flight> findByStatus(@Param(value = "status1") FlightStatus status,@Param(value = "status2") FlightStatus status1);
+    @Query(value = "SELECT f FROM Flight f WHERE status IN (:p1,:p2)")
+    List<Flight> findByStatus(@Param(value = "p1") FlightStatus p1,@Param(value = "p2") FlightStatus p2);
 }

@@ -31,7 +31,7 @@ public class FlightController {
 
     @GetMapping("/flightsStatus")
 //    public List<Flight> statusFlightList(@RequestParam FlightStatus status1, @RequestParam FlightStatus status2){ return flightRepository.findByStatusIn(Set.of(status1,status2));}
-    public List<Flight> statusFlightList(@RequestParam FlightStatus status1, @RequestParam FlightStatus status2){ return flightRepository.findByStatus(status1,status2);}
+    public List<Flight> statusFlightList(@RequestParam FlightStatus p1, @RequestParam FlightStatus p2){ return flightRepository.findByStatus(p1,p2);}
 
 
     @PostMapping("/create")
