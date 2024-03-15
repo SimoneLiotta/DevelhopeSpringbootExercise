@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: co.develhope.esercizio6.Esercizio6ApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.959 s -- in co.develhope.esercizio6.Esercizio6ApplicationTests
