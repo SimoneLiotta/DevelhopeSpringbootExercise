@@ -1,0 +1,15 @@
+custom:
+  variable1: ${VARIABLE1:2}
+  variable2: ${VARIABLE2:8}
+
+logging:
+  level:
+    root: INFO
+    services: DEBUG
+  file:
+    path: myCustomLogs
+
+spring:
+  output:
+    ansi:
+      enabled: ALWAYS
