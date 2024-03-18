@@ -18,6 +18,4 @@ public class APILoggingInterceptor implements HandlerInterceptor {
         System.out.println("Richiesta gestita con successo " + request.getRequestURI());
     }
 
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, @Nullable Exception ex) throws Exception {
-    }
 }

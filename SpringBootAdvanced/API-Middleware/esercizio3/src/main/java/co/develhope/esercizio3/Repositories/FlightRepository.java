@@ -11,6 +11,4 @@ import java.util.Objects;
 
 @Repository
 public interface FlightRepository extends JpaRepository<Flight, Long> {
-    @Query(value = "SELECT * FROM Flight", nativeQuery = true)
-    List<Flight> retrieveAllFlights();
 }

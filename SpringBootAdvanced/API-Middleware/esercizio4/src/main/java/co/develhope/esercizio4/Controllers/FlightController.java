@@ -3,6 +3,7 @@ package co.develhope.esercizio4.Controllers;
 import co.develhope.esercizio4.Entities.Flight;
 import co.develhope.esercizio4.Entities.FlightStatus;
 import co.develhope.esercizio4.Repositories.FlightRepository;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,15 +24,15 @@ public class FlightController {
         return flightRepository.findAll();
     }
 
-    @GetMapping("/ASCorder")
+    @GetMapping("/flight-ASC-order")
     public List<Flight> ASCOrderFlightList(){return flightRepository.findByAscOrder();}
 
     @GetMapping("/flightsONTIME")
     public List<Flight> ONTIMEFlightList(){return flightRepository.findByStatus(FlightStatus.ONTIME);}
 
     @GetMapping("/flightsStatus")
-//    public List<Flight> statusFlightList(@RequestParam FlightStatus status1, @RequestParam FlightStatus status2){ return flightRepository.findByStatusIn(Set.of(status1,status2));}
-    public List<Flight> statusFlightList(@RequestParam FlightStatus p1, @RequestParam FlightStatus p2){ return flightRepository.findByStatus(p1,p2);}
+    public List<Flight> statusFlightList(@RequestParam FlightStatus status1, @RequestParam FlightStatus status2){ return flightRepository.findByStatusIn(Set.of(status1,status2));}
+
 
 
     @PostMapping("/create")
@@ -40,7 +41,7 @@ public class FlightController {
         Random random = new Random();
         for (int i = 0; i < n; i++) {
             Flight flight = new Flight();
-            flight.setDescription("Flight " + i);
+            flight.setDescription(RandomStringUtils.randomAlphanumeric(10));
             flight.setFromAirport("Airport " + random.nextInt(10));
             flight.setToAirport("Airport " + random.nextInt(10));
             flight.setStatus(randomStatus());

@@ -16,16 +16,14 @@ import java.util.Optional;
 @Component
 public class MonthInterceptor implements HandlerInterceptor {
 
-    public List<Month> monthsList(){
-        List<Month> monthsList = new ArrayList<>();
-
+    private List<Month> monthsList = new ArrayList<>();
+    public MonthInterceptor(){
         monthsList.add(new Month(1, "Genuary", "Gennaio", "Genken"));
         monthsList.add(new Month(2, "February", "Febbraio", "Febbren"));
         monthsList.add(new Month(3, "March", "Marzo", "Marzz"));
         monthsList.add(new Month(4, "April", "Aprile", "Aprkil"));
         monthsList.add(new Month(5, "May", "Maggio", "Maken"));
         monthsList.add(new Month(6, "June", "Giugno", "Junken"));
-        return monthsList;
 
     }
 
@@ -35,21 +33,22 @@ public class MonthInterceptor implements HandlerInterceptor {
            response.sendError(HttpStatus.BAD_REQUEST.value());
            return false;
        }
-       for (Month month : monthsList()){
-           if (month.getMonthNumber()==Integer.parseInt(monthNumberString)){
-               request.setAttribute("selectMonth", month);
-               return true;
-           }
-       }
-       Month emptyMonth = new Month(0,"nop", "nop","nop");
-       request.setAttribute("selectMonth", emptyMonth);
-       return true;
+        try {
+            int monthNumber = Integer.parseInt(monthNumberString);
+            Optional<Month> selectedMonth = monthsList.stream()
+                    .filter(month -> month.getMonthNumber() == monthNumber)
+                    .findFirst();
+
+            request.setAttribute("selectMonth", selectedMonth.orElseGet(() -> new Month(0, "nop", "nop", "nop")));
+        } catch (NumberFormatException e) {
+            response.sendError(HttpStatus.BAD_REQUEST.value());
+            return false;
+        }
+
+        return true;
     }
 
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, @Nullable ModelAndView modelAndView) throws Exception {
         response.setStatus(HttpServletResponse.SC_OK);
-    }
-
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, @Nullable Exception ex) throws Exception {
     }
 }
