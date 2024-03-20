@@ -1,3 +1,8 @@
+server:
+  port: 8080
+application:
+  welcomeMsg: Hello!
+---
 spring:
   config:
     activate:
@@ -15,6 +20,3 @@ server:
   port: 5000
 application:
   welcomeMsg: Hello from Prod
-#---
-#server:
-#  port: 8080
